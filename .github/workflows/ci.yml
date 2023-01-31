@@ -1,0 +1,15 @@
+name: ci
+on: [push]
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    name: bundle
+    steps:
+      - uses: actions/checkout@v3
+      - uses: bahmutov/npm-install@v1
+      - run: npm run build
+      # now delete everything else and see if the bundle works
+      - name: remove node modules
+        run: rm -rf node_modules
+      - name: run the bundle
+        run: node .
