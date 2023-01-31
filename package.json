@@ -1,0 +1,22 @@
+{
+  "name": "esm-esbuild",
+  "version": "1.0.0",
+  "description": "Bundling ESM into a single CommonJS bundle",
+  "private": true,
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --platform=node --target=node14 --format=cjs --inject:./src/import-meta-url.js --define:import.meta.url=import_meta_url"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.17.5",
+    "prettier": "^2.8.3",
+    "update-notifier": "^6.0.2"
+  }
+}
