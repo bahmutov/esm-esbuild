@@ -16998,6 +16998,9 @@ var package_default = {
   description: "Bundling ESM into a single CommonJS bundle",
   private: true,
   main: "dist/index.js",
+  files: [
+    "dist"
+  ],
   scripts: {
     test: 'echo "Error: no test specified" && exit 1',
     build: "esbuild src/index.js --bundle --outfile=dist/index.js --platform=node --target=node14 --format=cjs --inject:./src/import-meta-url.js --define:import.meta.url=import_meta_url"
@@ -17012,8 +17015,13 @@ var package_default = {
   }
 };
 
+// src/hello.js
+init_import_meta_url();
+var hello = () => console.log("hello");
+
 // src/index.js
 updateNotifier({ pkg: package_default }).notify();
+hello();
 /*! Bundled license information:
 
 imurmurhash/imurmurhash.js:
